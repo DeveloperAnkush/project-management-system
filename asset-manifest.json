@@ -1,15 +1,17 @@
 {
   "files": {
     "main.css": "/project-management-system/static/css/main.5a6383e6.css",
-    "main.js": "/project-management-system/static/js/main.72a9ac5a.js",
+    "main.js": "/project-management-system/static/js/main.e3cc1e07.js",
     "static/media/BackgroundPic1.jpg": "/project-management-system/static/media/BackgroundPic1.631c6e94985432653cbd.jpg",
     "static/media/LoginModalPic.avif": "/project-management-system/static/media/LoginModalPic.60a83733727638465073.avif",
     "index.html": "/project-management-system/index.html",
+    "static/media/closeButton.svg": "/project-management-system/static/media/closeButton.36c5c058048d59d88b14708e46185f1b.svg",
+    "static/media/downArrow.svg": "/project-management-system/static/media/downArrow.68c7505b56a5bce5db0988941397676d.svg",
     "main.5a6383e6.css.map": "/project-management-system/static/css/main.5a6383e6.css.map",
-    "main.72a9ac5a.js.map": "/project-management-system/static/js/main.72a9ac5a.js.map"
+    "main.e3cc1e07.js.map": "/project-management-system/static/js/main.e3cc1e07.js.map"
   },
   "entrypoints": [
     "static/css/main.5a6383e6.css",
-    "static/js/main.72a9ac5a.js"
+    "static/js/main.e3cc1e07.js"
   ]
 }
