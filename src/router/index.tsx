@@ -6,7 +6,8 @@ const RouterGate = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<Login />} />
+                <Route path='/project-management-system' element={<Login />} />
+                <Route path='/login' element={<Login />} />
             </Routes>
         </BrowserRouter>
     );
