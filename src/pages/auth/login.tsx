@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../../utlis/validations';
@@ -7,8 +7,16 @@ import "./login.css"
 import LoginModalPic from "../../assets/LoginModalPic.avif";
 import { ReactComponent as DownArrow } from "../../assets/svgs/downArrow.svg";
 import { ReactComponent as CloseButton } from "../../assets/svgs/closeButton.svg";
+import { useLoginUserMutation } from '../../redux/services/auth.service';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../../redux/slices/auth.slice';
+import { FormValues } from '../../utlis/types';
+import Loader from '../../components/loader/loader';
 
 const Login = () => {
+    let navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [loginUser, { isLoading }] = useLoginUserMutation();
     const [isModalOpen, setModalOpen] = React.useState(false);
     const [hasManuallyOpened, setHasManuallyOpened] = React.useState(false);
 
@@ -23,11 +31,6 @@ const Login = () => {
         document.body.style.overflow = "initial";
     };
 
-
-    type FormValues = {
-        email: string;
-        password: string;
-    };
     const {
         handleSubmit,
         control,
@@ -37,8 +40,19 @@ const Login = () => {
         mode: "all",
     })
 
-    const onSubmit = (data: FormValues) => {
-        console.log("data==>", data)
+    const onSubmit = async (data: FormValues) => {
+        try {
+            const response = await loginUser(data).unwrap();
+            // Dispatch the setUserData action to store the userData in the Redux store
+            dispatch(setUserData(response));
+            if (!isLoading && response?.status === 200) {
+                localStorage.setItem("token", response?.data?.token)
+                navigate('/dashboard')
+            }
+        }
+        catch (error) {
+            console.error("login error", error)
+        }
     };
 
     React.useEffect(() => {
@@ -58,6 +72,9 @@ const Login = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [isModalOpen, hasManuallyOpened]);
+
+
+    if (isLoading) { return (<Loader />) }
 
     return (
         <>
