@@ -14,9 +14,6 @@ export const loginApi = baseApi.injectEndpoints({
         url: "/auth/local",
         method: "POST",
         body: JSON.stringify(credentials),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
       }),
     }),
   }),

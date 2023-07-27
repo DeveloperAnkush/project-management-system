@@ -1,9 +1,14 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import ResponsiveDrawer from '../drawer/drawer';
 
 const PrivateRoutes = () => {
     const auth = localStorage.getItem("token");
     return (
-        auth ? <Outlet /> : <Navigate to={'/login'} />
+        auth ? (
+            <ResponsiveDrawer>
+                <Outlet />
+            </ResponsiveDrawer>
+        ) : <Navigate to={'/login'} />
     );
 };
 

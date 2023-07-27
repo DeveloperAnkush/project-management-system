@@ -1,0 +1,21 @@
+.modal-wrapper {
+    min-width: 400px;
+}
+
+.modalheader {
+    padding: 10px !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    margin-bottom: 0px
+}
+
+.modalfooter {
+    padding: 10px;
+    border-top: 1px solid #dee2e6;
+}
+
+@media (max-width:575px) {
+    .modalheader {
+        min-width: 300px;
+        width: 90%;
+    }
+}

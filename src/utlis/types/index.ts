@@ -1,10 +1,10 @@
-// Login Credentials Type
+// Define interface for Login Credentials
 export interface FormValues {
   email: string;
   password: string;
 }
 
-// Login Response Type
+// Define interface for Login Response
 export interface UserType {
   data: {
     name: string;
@@ -61,4 +61,34 @@ export interface UserType {
   is_error: false;
   message: string;
   status: number;
+}
+
+// Define interfaces for the item and subitem objects of Responsive Drawer
+export interface DrawerItem {
+  id: number;
+  name: string;
+  img: React.ReactNode;
+  path?: string;
+  subitems?: DrawerItem[];
+}
+
+export interface DrawerData {
+  list: DrawerItem[];
+}
+
+// Define the type for the total notifications count response
+export interface TotalNotificationsResponse {
+  data: number;
+}
+
+// Define the pagination parameters interface for notifications listing
+export interface PaginationParams {
+  page: number;
+  pageSize: number;
+}
+
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
 }
